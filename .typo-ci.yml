@@ -15,3 +15,5 @@ excluded_words:
   - update-initramfs
   - setxkbmap
   - udevadm
+  - xkboptions
+  - timedatectl

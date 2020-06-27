@@ -79,7 +79,7 @@ end
 
 ## Recipes
 ### Keyboard Layout
-The `::keyboard_layout` recipe is just a shurtcut that calls the `codenamephp_system_keyboard_layout` without properties
+The `::keyboard_layout` recipe is just a shortcut that calls the `codenamephp_system_keyboard_layout` without properties
 
 ### Locale
 The `::locale` recipe just uses the chef `locale` resource with the value from `default['codenamephp']['system']['locale']`
