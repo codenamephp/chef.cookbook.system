@@ -11,4 +11,3 @@ issues_url 'https://github.com/codenamephp/chef.cookbook.system/issues'
 source_url 'https://github.com/codenamephp/chef.cookbook.system'
 
 supports 'debian'
-

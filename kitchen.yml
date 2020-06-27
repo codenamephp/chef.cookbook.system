@@ -14,7 +14,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[codenamephp_system::default]
+      - recipe[test::default]
     verifier:
       inspec_tests:
         - test/smoke/default
