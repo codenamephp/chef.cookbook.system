@@ -12,3 +12,6 @@ excluded_files:
   - ".github/*"
 
 excluded_words:
+  - update-initramfs
+  - setxkbmap
+  - udevadm
