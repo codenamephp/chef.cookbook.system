@@ -12,10 +12,20 @@ platforms:
   - name: debian-10
 
 suites:
-  - name: default
+  - name: resources
     run_list:
       - recipe[test::default]
     verifier:
       inspec_tests:
+        - test/smoke/keyboard_layout
+    attributes:
+  - name: recipes
+    run_list:
+      - recipe[codenamephp_system::keyboard_layout]
+      - recipe[codenamephp_system::locale]
+      - recipe[codenamephp_system::timezone]
+    verifier:
+      inspec_tests:
         - test/smoke/default
+        - test/smoke/keyboard_layout
     attributes:
