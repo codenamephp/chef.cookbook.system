@@ -1,0 +1,51 @@
+addons:
+  apt:
+    sources:
+      - chef-current-xenial
+    packages:
+      - chef-workstation
+
+if: sender != "github-actions[bot]"
+
+branches:
+  only:
+    - master
+    - /^\d+\.\d+(\.\d+)?(-\S*)?$/
+
+services: docker
+
+env:
+  global:
+    - CHEF_LICENSE=accept
+    - KITCHEN_LOCAL_YAML=kitchen.dokken.yml
+
+install:
+  - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
+  - eval "$(chef shell-init bash)"
+  - '%%PEM_DECRYPT%%'
+
+script:
+  - chef exec foodcritic .
+  - chef exec rubocop
+  - chef exec rspec
+  - chef exec kitchen test
+
+before_deploy:
+  - chef exec knife cookbook metadata from file metadata.rb
+deploy:
+  provider: chef_supermarket
+  user_id: "codenamephp"
+  client_key: "codenamephp.pem"
+  category: "Utilities"
+  edge: true
+  run:
+    - chef exec berks upload -e test
+  on:
+    tags: true
+
+notifications:
+  slack:
+    rooms:
+      - secure: '%%SLACK_SECRET%%'
+    on_success: never
+    on_failure: always
