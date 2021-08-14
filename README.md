@@ -1,6 +1,11 @@
 # Chef Cookbook System
 [![Build Status](https://travis-ci.com/codenamephp/chef.cookbook.system.svg?branch=master)](https://travis-ci.com/codenamephp/chef.cookbook.system)
 
+## Deprecated
+
+The cookbook is now deprecated and will not receive any updates. The keyboard layout received its own cookbook and the others are just oneliners that
+can be replicated rather easily.
+
 ## Requirements
 
 ### Supported Platforms
